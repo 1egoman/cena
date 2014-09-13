@@ -1,0 +1,15 @@
+{
+  "name": "grocery-backend",
+  "description": "grocery store stuff",
+  "version": "0.0.1",
+  "author": {
+    "name": "Ryan Gaus",
+    "twitter": "@rgausnet"
+  },
+  "dependencies": {
+    "express": "4.x.x",
+    "underscore": "1.7.x",
+    "request": "2.40.x",
+    "cheerio": "latest"
+  }
+}
