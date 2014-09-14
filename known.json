@@ -1,0 +1,14 @@
+{
+  "knownProducts": {
+    "354386": {
+      "name": "Wegmans Food You Feel Good About 2% Reduced Fat Milk",
+      "imageUrl": "http://www.wegmans.com/prodimg/389/200/077890122389.jpg",
+      "id": 354386,
+      "storeName": "Wegmans",
+      "price": 2.19
+    },
+    "374756": {
+      "price": 2.49
+    }
+  }
+}

@@ -53,12 +53,7 @@ module.exports = {
 
         // test for a known product, if so just send its previous data
         var id = parseInt(parsedUrl.query.productId);
-        // root.getKnownProducts(function(err, data) {
-        //   if (!err) {
-        //     root.knownProducts = data.knownProducts || {};
-        //   }
-        // })
-        if (root.knownProducts[id]) {
+        if (root.knownProducts[id.toString()]) {
           callback(root.knownProducts[id]);
           return;
         }
@@ -82,7 +77,7 @@ module.exports = {
 
         // add to the known products
         root.knownProducts[response.id] = response;
-        // root.saveKnownProducts();
+        fs.writeFile("./known.json", JSON.stringify({knownProducts: this.knownProducts}, null, 2));
 
         // return the response
         callback(response);
@@ -98,14 +93,21 @@ module.exports = {
     } else {
       this.knownProducts[id] = {price: price}
     }
+    this.saveKnownProducts();
   },
 
   saveKnownProducts: function() {
-    fs.writeFile(__dirname + "/persistant/known.json", {knownProducts: root.knownProducts});
+    fs.writeFile("./known.json", JSON.stringify({knownProducts: this.knownProducts}, null, 2));
   },
 
   getKnownProducts: function(callback) {
-    fs.readFile(__dirname + "/persistant/known.json", callback);
+    var root = this;
+    fs.readFile("./known.json", function(err, data) {
+      if (!err) {
+        root.knownProducts = JSON.parse(data.toString()).knownProducts || {};
+        console.log(root.knownProducts)
+      }
+    });
   }
 
 }

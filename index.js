@@ -11,6 +11,7 @@ var express = require('express'),
 // initialize store
 weg = require("./stores/wegmans");
 weg.setStoreId(10052);
+weg.getKnownProducts()
 
 var list = [];
 
