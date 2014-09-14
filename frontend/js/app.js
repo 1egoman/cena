@@ -1,4 +1,5 @@
 var app = angular.module("Cena", []);
+var HOST = "http://192.168.1.14:8100";
 
 app.controller("listCtrl", function($scope, $http, $timeout) {
 
@@ -6,12 +7,13 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
 
   this.items = [];
   $scope.listSearchString = "";
+  this.newFoodItem = "";
 
   // add an item to the list, providing a url to the item
   this.addItemFromUrl = function(url) {
     $http({
       method: "get",
-      url: "http://localhost:8100/store/product/url",
+      url: HOST+"/store/product/url",
       params: {
         url: encodeURIComponent(url)
       }
@@ -39,6 +41,22 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
     }, 100);
   }
 
+  this.tryAddFood = function(evt) {
+    if (evt.keyCode == 13) {
+      root.items.push({
+        "name": this.newFoodItem,
+        "imageUrl": null,
+        "id": -1,
+        "storeName": "Custom",
+        "price": null,
+        "shown": true,
+        "quantity": 1
+      });
+      root.pushList();
+      $("input.addto-list").val("");
+    }
+  }
+
   // remove item from grocery list
   this.removeItem = function(index) {
     root.items.splice(index, 1);
@@ -57,7 +75,7 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
   this.pushList = function() {
     $http({
       method: "post",
-      url: "http://localhost:8100/list",
+      url: HOST+"/list",
       data: {list: this.items}
     }).success(function(data) {
       if (data == "FAIL") return;
@@ -71,15 +89,15 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
   this.pullList = function() {
     $http({
       method: "get",
-      url: "http://localhost:8100/list",
+      url: HOST+"/list",
       data: {list: this.items}
     }).success(function(data) {
       if (data == "FAIL") return;
       root.items = data.list;
+      // update the subtotal
+      $("span.final-price").html( "$" + root.updateSubTotal() );
     });
 
-    // update the subtotal
-    $("span.final-price").html( "$" + this.updateSubTotal() );
   }
 
   // update the subtotal of all the items
@@ -97,3 +115,48 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
 
   this.pullList();
 })
+
+
+app.controller("recipeCtrl", function($scope, $http, $timeout) {
+  var root = this;
+
+  this.recipeName = "";
+
+  this.items = [{
+    name: "Tacos",
+    shown: true,
+    ingredients: [
+      {
+        "name": "Romaine Lettuce",
+        "imageUrl": "http://www.wegmans.com/prodimg/004/200/204640000004.jpg",
+        "id": 383085,
+        "storeName": "Wegmans",
+        "price": 1.69,
+        "shown": true,
+        "quantity": 2
+      }
+    ]
+  }];
+
+  this.addRecipe = function(lC, name) {
+    this.items.push({
+      name: name,
+      shown: true,
+      ingredients: lC.items
+    });
+    lC.items = [];
+    lC.pushList();
+
+    console.log(this.items);
+  }
+
+  this.addRecipeToList = function(lC, index) {
+    items = this.items[index];
+    _.each(items.ingredients, function(i, ct) {
+      i.fromRecipe = items.name;
+      lC.items.push(i);
+    });
+    lC.pushList();
+  }
+
+});

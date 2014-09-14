@@ -55,7 +55,7 @@ app.get('/list', function(req, res){
   });
 });
 
-// get the list
+// set the list
 app.post('/list', function(req, res) {
   if (req.body.list) {
     list = req.body.list;

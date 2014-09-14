@@ -21,7 +21,7 @@
     <![endif]-->
   </head>
 
-  <body ng-app="Cena">
+  <body ng-app="Cena" ng-controller="listCtrl as lC">
     <!-- navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -46,23 +46,62 @@
 
 
     <!-- recipes -->
-    <div class="container recipes" style="display:none;">
+    <div class="container recipes" ng-controller="recipeCtrl as rC">
 
       <div class="jumbotron">
         <div class="pull-right">
-          <input type="text" class="form-control search-recipes" placeholder="Search Recipes"/>
+          <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newRecipeModal">Add Recipe</button>
         </div>
         <h1>My Recipes</h1>
         <p>All of your recipes, from the stews to the tacos. Pick one (or multiple!) to add to your shopping list.</p>
+        <input type="text" class="form-control search-recipes" placeholder="Search Recipes"/>
+      </div>
+
+      <!-- new recipe -->
+      <div class="modal fade" id="newRecipeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Add Recipe</h4>
+            </div>
+            <div class="modal-body">
+              <input type="text" class="form-control recipe-name" placeholder="Recipe Name" ng-model="rC.recipeName"/>
+              <p>Place all of your recipe ingredients onto your list.
+                 All of your list items will be put into this recipe, clearing the list.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" ng-click="rC.addRecipe(lC, rC.recipeName)" data-dismiss="modal">Add Recipe</button>
+            </div>
+          </div>
+        </div>
       </div>
 
 
+      <!-- list of all recipes -->
       <div class="panel panel-default">
-        <ul class="list-group">
-          <li class="list-group-item">
-            <img src="http://www.wegmans.com/prodimg/203/200/033383650203.jpg"/>
+        <div class="panel-body" ng-show="rC.items.length == 0">
+          <h2>No Recipes</h2>
+          <p>Add some items to your list above</p>
+        </div>
+        <ul class="list-group list">
+          <li ng-repeat="item in rC.items" ng-show="item.shown" class="list-group-item recipe-item">
+            <h3>
+              {{ item.name }}
+              <span class="small">{{ item.storeName }}</span>
+            </h3>
+
+            <button class="pull-right btn btn-success" ng-click="rC.addRecipeToList(lC, $index)">Add to List</button>
+
           </li>
+
         </ul>
+
       </div>
 
 
@@ -71,7 +110,7 @@
 
 
     <!-- list -->
-    <div class="container list" ng-controller="listCtrl as lC">
+    <div class="container list">
 
       <!-- the header -->
       <div class="jumbotron">
@@ -86,8 +125,10 @@
         <p>A collection of all the items that you need to buy, both from the planned meals and other items.</p>
         <input type="text"
           class="form-control addto-list"
-          placeholder="Paste in a url of some food, or just type its name"
+          placeholder="Paste in a url of some food, or just type its name and press enter"
           ng-paste="lC.delayAddItem()"
+          ng-keydown="lC.tryAddFood($event)",
+          ng-model="lC.newFoodItem"
          />
       </div>
 
@@ -103,7 +144,7 @@
             <img src="{{ item.imageUrl }}"/>
             <h3>
               {{ item.name }}
-              <span class="small">{{ item.storeName }}</span>
+              <span class="small">{{ item.storeName }} {{ item.fromRecipe &amp;&amp; '(' + item.fromRecipe + ')' }}</span>
             </h3>
 
             <div class="quantity-price">

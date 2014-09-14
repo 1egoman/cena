@@ -6,6 +6,7 @@
 body {
   height: 100%;
   padding-top: 50px;
+  overflow-y: scroll;
 }
 
 .jumbotron {
@@ -13,9 +14,10 @@ body {
 }
 
 // grocery list item
-.list-group-item.food-item {
+.food-item {
   height: 84px;
   position: relative;
+  list-style-type: none;
 
   img {
     left: 15px;
@@ -32,7 +34,6 @@ body {
 
     .small {
       margin-left: 10px;
-      &:before { content: "from "; }
     }
   }
 
@@ -78,4 +79,36 @@ div.panel-body.price {
       content: "Subtotal: ";
     }
   }
+}
+
+// recipes
+.recipe-ingr {
+  margin-top: 10px;
+}
+
+// grocery list item
+.list-group-item.recipe-item {
+  height: 84px;
+  position: relative;
+
+  h3 {
+    left: 15px;
+    top: 10px;
+    position: absolute;
+    margin-left: 16px;
+
+    .small {
+      margin-left: 10px;
+    }
+  }
+
+  button {
+    // font-size: @font-size-base * 2.2;
+    margin-right: 8px;
+    margin-top: 16px;
+  }
+}
+
+.recipe-ingredients {
+  margin-top: 20px;
 }

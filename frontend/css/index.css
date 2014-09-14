@@ -6167,49 +6167,48 @@ button.close {
 body {
   height: 100%;
   padding-top: 50px;
+  overflow-y: scroll;
 }
 .jumbotron {
   margin-top: 40px;
 }
-.list-group-item.food-item {
+.food-item {
   height: 84px;
   position: relative;
+  list-style-type: none;
 }
-.list-group-item.food-item img {
+.food-item img {
   left: 15px;
   top: 10px;
   position: absolute;
   width: 64px;
 }
-.list-group-item.food-item h3 {
+.food-item h3 {
   left: 96px;
   top: 10px;
   position: absolute;
   margin-left: 16px;
 }
-.list-group-item.food-item h3 .small {
+.food-item h3 .small {
   margin-left: 10px;
 }
-.list-group-item.food-item h3 .small:before {
-  content: "from ";
-}
-.list-group-item.food-item button.close {
+.food-item button.close {
   height: 100%;
   font-size: 30.8px;
   margin-right: 8px;
 }
-.list-group-item.food-item div.quantity-price {
+.food-item div.quantity-price {
   position: absolute;
   top: 10px;
   right: 50px;
   width: 250px;
   margin-left: 16px;
 }
-.list-group-item.food-item div.quantity-price .quantity {
+.food-item div.quantity-price .quantity {
   width: 75px;
   float: left;
 }
-.list-group-item.food-item div.quantity-price .currency {
+.food-item div.quantity-price .currency {
   float: right;
   width: 150px;
 }
@@ -6225,4 +6224,27 @@ div.panel-body.price div.pricebox {
 }
 div.panel-body.price div.pricebox span:before {
   content: "Subtotal: ";
+}
+.recipe-ingr {
+  margin-top: 10px;
+}
+.list-group-item.recipe-item {
+  height: 84px;
+  position: relative;
+}
+.list-group-item.recipe-item h3 {
+  left: 15px;
+  top: 10px;
+  position: absolute;
+  margin-left: 16px;
+}
+.list-group-item.recipe-item h3 .small {
+  margin-left: 10px;
+}
+.list-group-item.recipe-item button {
+  margin-right: 8px;
+  margin-top: 16px;
+}
+.recipe-ingredients {
+  margin-top: 20px;
 }

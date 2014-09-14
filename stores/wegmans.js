@@ -1,6 +1,7 @@
 var request = require('request'),
     cheerio = require('cheerio'),
     urlParser = require('url'),
+    _ = require("underscore"),
     fs = require("fs");
 
 module.exports = {
@@ -51,9 +52,10 @@ module.exports = {
         // load html to be scraped
         var $ = cheerio.load(html);
 
+
         // test for a known product, if so just send its previous data
         var id = parseInt(parsedUrl.query.productId);
-        if (root.knownProducts[id.toString()]) {
+        if ( id > 0 && root.knownProducts[id.toString()]) {
           callback(root.knownProducts[id]);
           return;
         }
@@ -66,6 +68,7 @@ module.exports = {
           storeName: "Wegmans",
           price: null
         };
+
         // start the scraping
         var productBody = $("body div#content-primary div.prodHead");
 
@@ -97,7 +100,10 @@ module.exports = {
   },
 
   saveKnownProducts: function() {
-    fs.writeFile("./known.json", JSON.stringify({knownProducts: this.knownProducts}, null, 2));
+    v = _.filter(this.knownProducts, function(i) {
+      return i.id > 0;
+    })
+    fs.writeFile("./known.json", JSON.stringify({knownProducts: v}, null, 2));
   },
 
   getKnownProducts: function(callback) {
@@ -105,7 +111,6 @@ module.exports = {
     fs.readFile("./known.json", function(err, data) {
       if (!err) {
         root.knownProducts = JSON.parse(data.toString()).knownProducts || {};
-        console.log(root.knownProducts)
       }
     });
   }

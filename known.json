@@ -1,14 +1,60 @@
 {
-  "knownProducts": {
-    "354386": {
+  "knownProducts": [
+    {
+      "name": "Wegmans 80% Lean Ground Beef, FAMILY PACK - 1 Package",
+      "imageUrl": "http://www.wegmans.com/prodimg/007/200/201660000007.jpg",
+      "id": 351582,
+      "storeName": "Wegmans",
+      "price": 2.99
+    },
+    {
       "name": "Wegmans Food You Feel Good About 2% Reduced Fat Milk",
       "imageUrl": "http://www.wegmans.com/prodimg/389/200/077890122389.jpg",
       "id": 354386,
       "storeName": "Wegmans",
       "price": 2.19
     },
-    "374756": {
+    {
+      "name": "Wegmans Food You Feel Good About Eggs, Large (one dozen)",
+      "imageUrl": "http://www.wegmans.com/prodimg/338/200/077890801338.jpg",
+      "id": 372506,
+      "storeName": "Wegmans",
+      "price": 1.99
+    },
+    {
+      "name": "Wegmans Food You Feel Good About 100% Orange Juice, Extra Pulp, Premium",
+      "imageUrl": "http://www.wegmans.com/prodimg/248/200/077890539248.jpg",
+      "id": 374756,
+      "storeName": "Wegmans",
       "price": 2.49
+    },
+    {
+      "name": "Wegmans Food You Feel Good About In-Store Baked Bagels",
+      "imageUrl": "http://www.wegmans.com/prodimg/151/200/000000001151.jpg",
+      "id": 376379,
+      "storeName": "Wegmans",
+      "price": 0.85
+    },
+    {
+      "name": "Wegmans In-Store Baked Muffins",
+      "imageUrl": "http://www.wegmans.com/prodimg/206/200/000000004206.jpg",
+      "id": 376397,
+      "storeName": "Wegmans",
+      "price": 1.29
+    },
+    {
+      "name": "Romaine Lettuce",
+      "imageUrl": "http://www.wegmans.com/prodimg/004/200/204640000004.jpg",
+      "id": 383085,
+      "storeName": "Wegmans",
+      "price": 1.69
+    },
+    {
+      "name": "Wegmans 4 Pack Assorted In Store Baked Muffins",
+      "imageUrl": "http://www.wegmans.com/prodimg/442/200/077890227442.jpg",
+      "id": 717743,
+      "storeName": "Wegmans",
+      "price": 4
     }
-  }
+  ]
 }
