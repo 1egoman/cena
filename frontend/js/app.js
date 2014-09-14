@@ -148,6 +148,7 @@ app.controller("recipeCtrl", function($scope, $http, $timeout) {
     lC.pushList();
 
     console.log(this.items);
+    this.pushList();
   }
 
   this.addRecipeToList = function(lC, index) {
@@ -158,5 +159,31 @@ app.controller("recipeCtrl", function($scope, $http, $timeout) {
     });
     lC.pushList();
   }
+
+  // push the local list information to the server
+  this.pushList = function() {
+    $http({
+      method: "post",
+      url: HOST+"/recipe",
+      data: {recipe: this.items}
+    }).success(function(data) {
+      if (data == "FAIL") return;
+    });
+  }
+
+  // pull the server's information to the local list
+  this.pullList = function() {
+    $http({
+      method: "get",
+      url: HOST+"/recipe"
+    }).success(function(data) {
+      if (data == "FAIL") return;
+      root.items = data.recipes;
+    });
+
+  }
+
+  this.pullList();
+
 
 });

@@ -101,7 +101,7 @@ module.exports = {
 
   saveKnownProducts: function() {
     v = _.filter(this.knownProducts, function(i) {
-      return i.id > 0;
+      return i && i.id > 0;
     })
     fs.writeFile("./known.json", JSON.stringify({knownProducts: v}, null, 2));
   },

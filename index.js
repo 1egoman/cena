@@ -72,6 +72,27 @@ app.post('/list', function(req, res) {
 });
 
 
+// the recipes
+app.get("/recipe", function(req, res) {
+  fs.readFile(__dirname + "/persistant/recipes.json", function(err, data) {
+    if (!err) {
+      list = JSON.parse(data);
+      res.send({recipes: list});
+    }
+  });
+});
+
+app.post('/recipe', function(req, res) {
+  if (req.body.recipe) {
+    recipe = req.body.recipe;
+
+    fs.writeFile(__dirname + "/persistant/recipes.json", JSON.stringify(recipe, null, 2));
+    res.send("OK")
+  }
+});
+
+
+
 app.listen('8100')
 
 console.log(' * Bound to port :8100');
