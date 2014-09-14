@@ -1,0 +1,43 @@
+// out: index.css
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+@import "../bootstrap/less/bootstrap.less";
+
+body {
+  height: 100%;
+  padding-top: 50px;
+}
+
+.jumbotron {
+  margin-top: 40px;
+}
+
+// grocery list item
+.list-group-item.food-item {
+  height: 84px;
+  position: relative;
+
+  img {
+    left: 15px;
+    top: 10px;
+    position: absolute;
+    width: 64px;
+  }
+
+  h3 {
+    left: 96px;
+    top: 10px;
+    position: absolute;
+    margin-left: 16px;
+
+    .small {
+      margin-left: 10px;
+      &:before { content: "from "; }
+    }
+  }
+
+  button.close {
+    height: 100%;
+    font-size: @font-size-base * 2.2;
+    margin-right: 8px;
+  }
+}
