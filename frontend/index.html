@@ -21,7 +21,7 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body ng-app="Cena">
     <!-- navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -44,29 +44,6 @@
       </div>
     </div>
 
-
-    <!-- list -->
-    <div class="container list">
-
-      <div class="jumbotron">
-        <div class="pull-right">
-          <input type="text" class="form-control search-list" placeholder="Search List"/>
-        </div>
-        <h1>My List</h1>
-        <p>A collection of all the items that you need to buy, both from the planned meals and other items.</p>
-      </div>
-
-      <!-- list of al items -->
-      <div class="panel panel-default">
-
-        <ul class="list-group list"></ul>
-
-
-      </div>
-
-
-
-    </div><!-- /.container -->
 
     <!-- recipes -->
     <div class="container recipes" style="display:none;">
@@ -92,24 +69,58 @@
 
     </div><!-- /.container -->
 
-    <!-- backbone templates -->
 
-    <!-- List item for 'My List' -->
-    <script type="text/template" id="list_item">
-      <li class="list-group-item food-item">
-        <img src="<%= item_img %>"/>
-        <h3>
-          <%= item_name %>
-          <span class="small"><%= item_vendor %></span>
-        </h3>
+    <!-- list -->
+    <div class="container list" ng-controller="listCtrl as lC">
 
-        <button type="button" class="close pull-right" data-dismiss="alert">
-          <span aria-hidden="true">&times;</span>
-          <span class="sr-only">Close</span>
-        </button>
+      <!-- the header -->
+      <div class="jumbotron">
+        <div class="pull-right">
+          <input type="text"
+            class="form-control search-list"
+            placeholder="Search List"
+            ng-model="listSearchString"
+           />
+        </div>
+        <h1>My List</h1>
+        <p>A collection of all the items that you need to buy, both from the planned meals and other items.</p>
+        <input type="text"
+          class="form-control addto-list"
+          placeholder="Paste in a url of some food, or just type its name"
+          ng-paste="lC.addItemFromUrl('http://www.wegmans.com/webapp/wcs/stores/servlet/ProductDisplay?productId=354386&storeId=10052&langId=-1')"
+         />
+      </div>
 
-      </li>
-    </script>
+      <!-- list of all items -->
+      <div class="panel panel-default">
+        <ul class="list-group list">
+
+          <li ng-repeat="item in lC.items" ng-show="item.shown" class="list-group-item food-item">
+            <img src="{{ item.imageUrl }}"/>
+            <h3>
+              {{ item.name }}
+              <span class="small">Wegmans</span>
+            </h3>
+
+            <div class="quantity-price">
+              <input type="number" class="form-control quantity" value="1" placeholder="Amt"/>
+              <input type="number" class="form-control currency" min="0" max="9999"
+                step="0.01" size="4" placeholder="Price"/>
+            </div>
+
+            <button type="button" class="close pull-right" ng-click="lC.removeItem($index)">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+
+          </li>
+
+        </ul>
+      </div>
+
+    </div><!-- /.container -->
+
+
 
 
     <!-- Bootstrap core JavaScript
@@ -118,7 +129,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/underscore.min.js"></script>
-    <script src="js/backbone.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
