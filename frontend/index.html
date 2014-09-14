@@ -87,25 +87,29 @@
         <input type="text"
           class="form-control addto-list"
           placeholder="Paste in a url of some food, or just type its name"
-          ng-paste="lC.addItemFromUrl('http://www.wegmans.com/webapp/wcs/stores/servlet/ProductDisplay?productId=354386&storeId=10052&langId=-1')"
+          ng-paste="lC.delayAddItem()"
          />
       </div>
 
       <!-- list of all items -->
       <div class="panel panel-default">
+        <div class="panel-body" ng-show="lC.items.length == 0">
+          <h2>No Items</h2>
+          <p>Add some items to your list above</p>
+        </div>
         <ul class="list-group list">
 
           <li ng-repeat="item in lC.items" ng-show="item.shown" class="list-group-item food-item">
             <img src="{{ item.imageUrl }}"/>
             <h3>
               {{ item.name }}
-              <span class="small">Wegmans</span>
+              <span class="small">{{ item.storeName }}</span>
             </h3>
 
             <div class="quantity-price">
-              <input type="number" class="form-control quantity" value="1" placeholder="Amt"/>
+              <input type="number" class="form-control quantity" placeholder="Amt" ng-model="item.quantity" ng-change="lC.pushList()"/>
               <input type="number" class="form-control currency" min="0" max="9999"
-                step="0.01" size="4" placeholder="Price"/>
+                step="0.01" size="4" placeholder="Price" ng-model="item.price" ng-change="lC.pushList()"/>
             </div>
 
             <button type="button" class="close pull-right" ng-click="lC.removeItem($index)">
@@ -116,6 +120,13 @@
           </li>
 
         </ul>
+
+        <!-- the total price, etc -->
+        <div class="panel-body price" ng-show="lC.items.length !== 0">
+          <div class="pricebox pull-right">
+            <span class="final-price"></span>
+          </div>
+        </div>
       </div>
 
     </div><!-- /.container -->

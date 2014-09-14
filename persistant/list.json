@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Wegmans Food You Feel Good About 100% Orange Juice, Extra Pulp, Premium",
+    "imageUrl": "http://www.wegmans.com/prodimg/248/200/077890539248.jpg",
+    "id": 374756,
+    "storeName": "Wegmans",
+    "price": 2.49,
+    "shown": true,
+    "quantity": 1
+  },
+  {
+    "name": "Wegmans Food You Feel Good About 2% Reduced Fat Milk",
+    "imageUrl": "http://www.wegmans.com/prodimg/389/200/077890122389.jpg",
+    "id": 354386,
+    "storeName": "Wegmans",
+    "price": 2.19,
+    "shown": true,
+    "quantity": 1
+  }
+]

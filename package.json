@@ -10,6 +10,7 @@
     "express": "4.x.x",
     "underscore": "1.7.x",
     "request": "2.40.x",
-    "cheerio": "latest"
+    "cheerio": "latest",
+    "body-parser": "1.8.1"
   }
 }

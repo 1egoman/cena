@@ -1,6 +1,6 @@
 var app = angular.module("Cena", []);
 
-app.controller("listCtrl", function($scope, $http) {
+app.controller("listCtrl", function($scope, $http, $timeout) {
 
   var root = this;
 
@@ -13,18 +13,36 @@ app.controller("listCtrl", function($scope, $http) {
       method: "get",
       url: "http://localhost:8100/store/product/url",
       params: {
-        url: encodeURIComponent(url || $("input.addto-list").val())
+        url: encodeURIComponent(url)
       }
     }).success(function(data) {
+      if (data == "FAIL") return;
       data.shown = true;
+      data.quantity = 1;
       root.items.push(data);
-      url && $("input.addto-list").val("");
+      root.pushList();
     });
+  }
+
+  // try to add the item from the textbox
+  this.delayAddItem = function() {
+    $timeout(function() {
+
+      // get textbox contents
+      var text = $('input.addto-list').val();
+
+      // make sure we have a url
+      if (/(https?:\/\/)?www\./gi.test(text)) {
+        root.addItemFromUrl( text );
+        $("input.addto-list").val("");
+      }
+    }, 100);
   }
 
   // remove item from grocery list
   this.removeItem = function(index) {
     root.items.splice(index, 1);
+    root.pushList();
   }
 
   // do the search on all the items
@@ -35,13 +53,47 @@ app.controller("listCtrl", function($scope, $http) {
     });
   }
 
+  // push the local list information to the server
+  this.pushList = function() {
+    $http({
+      method: "post",
+      url: "http://localhost:8100/list",
+      data: {list: this.items}
+    }).success(function(data) {
+      if (data == "FAIL") return;
+    });
+
+    // update the subtotal
+    $("span.final-price").html( "$" + this.updateSubTotal() );
+  }
+
+  // pull the server's information to the local list
+  this.pullList = function() {
+    $http({
+      method: "get",
+      url: "http://localhost:8100/list",
+      data: {list: this.items}
+    }).success(function(data) {
+      if (data == "FAIL") return;
+      root.items = data.list;
+    });
+
+    // update the subtotal
+    $("span.final-price").html( "$" + this.updateSubTotal() );
+  }
+
+  // update the subtotal of all the items
+  this.updateSubTotal = function() {
+    itemPrices = _.map(root.items, function(i) {
+      return i.price * i.quantity;
+    })
+    return _.reduce(itemPrices, function(memo, num){ return memo + num; }, 0);
+  }
+
   // update the search
   $scope.$watch("listSearchString", function(newValue, oldValue) {
     root.doSearch(newValue);
   });
 
-  // add a few items
-  this.addItemFromUrl("http://www.wegmans.com/webapp/wcs/stores/servlet/ProductDisplay?productId=387796&storeId=10052&langId=-1");
-  this.addItemFromUrl("http://www.wegmans.com/webapp/wcs/stores/servlet/ProductDisplay?productId=377796&storeId=10052&langId=-1");
-
+  this.pullList();
 })
