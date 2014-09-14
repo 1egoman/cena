@@ -1,6 +1,22 @@
 var app = angular.module("Cena", []);
 var HOST = "http://192.168.1.14:8100";
 
+var showRecipies = function() {
+  $("body > div.container").hide();
+  $("body > div.container.recipes").show();
+  $("li.l-item").removeClass("active");
+  $("li.r-item").addClass("active");
+}
+
+var showList = function() {
+  $("body > div.container").hide();
+  $("body > div.container.list").show();
+  $("li.r-item").removeClass("active");
+  $("li.l-item").addClass("active");
+}
+showList();
+
+
 app.controller("listCtrl", function($scope, $http, $timeout) {
 
   var root = this;
@@ -105,7 +121,8 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
     itemPrices = _.map(root.items, function(i) {
       return i.price * i.quantity;
     })
-    return _.reduce(itemPrices, function(memo, num){ return memo + num; }, 0);
+    n = _.reduce(itemPrices, function(memo, num){ return memo + num; }, 0);
+    return n.toFixed(2);
   }
 
   // update the search
@@ -158,7 +175,15 @@ app.controller("recipeCtrl", function($scope, $http, $timeout) {
       lC.items.push(i);
     });
     lC.pushList();
+    showList();
   }
+
+  // remove item from recipe list
+  this.removeItem = function(index) {
+    root.items.splice(index, 1);
+    root.pushList();
+  }
+
 
   // push the local list information to the server
   this.pushList = function() {

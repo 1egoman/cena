@@ -6242,8 +6242,12 @@ div.panel-body.price div.pricebox span:before {
   margin-left: 10px;
 }
 .list-group-item.recipe-item button {
-  margin-right: 8px;
+  margin-right: 16px;
   margin-top: 16px;
+}
+.list-group-item.recipe-item button.close {
+  font-size: 30.8px;
+  margin-right: 8px;
 }
 .recipe-ingredients {
   margin-top: 20px;
