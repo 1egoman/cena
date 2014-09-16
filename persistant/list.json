@@ -1,5 +1,25 @@
 [
   {
+    "name": "Wegmans Food You Feel Good About 2% Reduced Fat Milk",
+    "imageUrl": "http://www.wegmans.com/prodimg/389/200/077890122389.jpg",
+    "id": 354386,
+    "storeName": "Wegmans",
+    "price": null,
+    "shown": true,
+    "quantity": 1,
+    "fromRecipe": "milk beef"
+  },
+  {
+    "name": "Wegmans 80% Lean Ground Beef, FAMILY PACK - 1 Package",
+    "imageUrl": "http://www.wegmans.com/prodimg/007/200/201660000007.jpg",
+    "id": 351582,
+    "storeName": "Wegmans",
+    "price": null,
+    "shown": true,
+    "quantity": 1,
+    "fromRecipe": "milk beef"
+  },
+  {
     "name": "Wegmans 80% Lean Ground Beef, FAMILY PACK - 1 Package",
     "imageUrl": "http://www.wegmans.com/prodimg/007/200/201660000007.jpg",
     "id": 351582,

@@ -10,7 +10,8 @@
         "storeName": "Wegmans",
         "price": null,
         "shown": true,
-        "quantity": 1
+        "quantity": 1,
+        "fromRecipe": "test"
       },
       {
         "name": "Wegmans 80% Lean Ground Beef, FAMILY PACK - 1 Package",
@@ -19,7 +20,8 @@
         "storeName": "Wegmans",
         "price": null,
         "shown": true,
-        "quantity": 1
+        "quantity": 1,
+        "fromRecipe": "test"
       }
     ]
   },
