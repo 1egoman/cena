@@ -142,6 +142,24 @@
           <h2>No Items</h2>
           <p>Add some items to your list above</p>
         </div>
+
+        <!-- shortcut buttons -->
+        <div class="panel-body toolbar" ng-hide="lC.items.length == 0">
+          <button class="btn btn-danger" ng-click="lC.items = []">
+            <span class="glyphicon glyphicon-trash"></span>
+            Remove All
+          </button>
+          <button class="btn btn-info" ng-click="lC.pullList()">
+            <span class="glyphicon glyphicon-log-in"></span>
+            Pull
+          </button>
+          <button class="btn btn-info" ng-click="lC.pushList()">
+            <span class="glyphicon glyphicon-log-out"></span>
+            Push
+          </button>
+        </div>
+
+
         <ul class="list-group list">
 
           <li ng-repeat="item in lC.items" ng-show="item.shown" class="list-group-item food-item">
