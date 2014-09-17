@@ -4,20 +4,23 @@
     "imageUrl": "http://www.wegmans.com/prodimg/389/200/077890122389.jpg",
     "id": 354386,
     "storeName": "Wegmans",
-    "price": null,
+    "price": 2.19,
     "shown": true,
     "quantity": 1,
-    "fromRecipe": "milk beef"
+    "fromRecipe": "milk beef",
+    "tag": "",
+    "order": ""
   },
   {
     "name": "Wegmans 80% Lean Ground Beef, FAMILY PACK - 1 Package",
     "imageUrl": "http://www.wegmans.com/prodimg/007/200/201660000007.jpg",
     "id": 351582,
     "storeName": "Wegmans",
-    "price": null,
+    "price": 2.19,
     "shown": true,
     "quantity": 1,
-    "fromRecipe": "milk beef"
+    "fromRecipe": "milk beef",
+    "order": "0"
   },
   {
     "name": "Wegmans 80% Lean Ground Beef, FAMILY PACK - 1 Package",
@@ -27,7 +30,8 @@
     "price": 2.99,
     "shown": true,
     "quantity": 1,
-    "fromRecipe": "Tacos"
+    "fromRecipe": "Tacos",
+    "order": "0"
   },
   {
     "name": "Romaine Lettuce",
@@ -37,7 +41,8 @@
     "price": 1.69,
     "shown": true,
     "quantity": 1,
-    "fromRecipe": "Tacos"
+    "fromRecipe": "Tacos",
+    "order": "0"
   },
   {
     "name": "Greenhouse Grown Tomatoes On-The-Vine - 1 Bunch",
@@ -47,7 +52,8 @@
     "price": 2.99,
     "shown": true,
     "quantity": 1,
-    "fromRecipe": "Tacos"
+    "fromRecipe": "Tacos",
+    "order": "0"
   },
   {
     "name": "Wegmans Sharp Cheddar Cheese, Shredded",
@@ -57,7 +63,8 @@
     "price": 2.79,
     "shown": true,
     "quantity": 1,
-    "fromRecipe": "Tacos"
+    "fromRecipe": "Tacos",
+    "order": "0"
   },
   {
     "name": "Wegmans Tortillas, Burrito, Gordita Style, Flour",
@@ -67,7 +74,8 @@
     "price": 1.99,
     "shown": true,
     "quantity": 1,
-    "fromRecipe": "Tacos"
+    "fromRecipe": "Tacos",
+    "order": "0"
   },
   {
     "name": "Vidalia Sweet Onions - 1 Each",
@@ -77,6 +85,7 @@
     "price": 1.69,
     "shown": true,
     "quantity": 1,
-    "fromRecipe": "Tacos"
+    "fromRecipe": "Tacos",
+    "order": "0"
   }
 ]

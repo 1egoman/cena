@@ -6212,6 +6212,11 @@ body {
   float: right;
   width: 150px;
 }
+.food-item div.quantity-price .tag {
+  border: 0px;
+  width: 100%;
+  padding: 6px 12px;
+}
 div.panel-body.price {
   position: relative;
   height: 48px;
@@ -6251,4 +6256,62 @@ div.panel-body.price div.pricebox span:before {
 }
 .recipe-ingredients {
   margin-top: 20px;
+}
+div.printable-list {
+  width: 100%;
+  height: 100%;
+  display: none;
+  padding: 20px;
+}
+div.printable-list h1 small {
+  margin-left: 32px;
+}
+div.printable-list ul {
+  list-style-type: none;
+  padding-left: 10px;
+}
+div.printable-list ul li {
+  font-size: 13.3px;
+}
+div.printable-list ul li span.price {
+  font-weight: 600;
+  margin-right: 16px;
+}
+div.printable-list ul li span.price:before {
+  content: "$";
+}
+div.printable-list ul li span.qty {
+  color: red;
+}
+div.printable-list ul li span.qty:before {
+  content: "(";
+}
+div.printable-list ul li span.qty:after {
+  content: ")";
+}
+div.printable-list ul li:last-child {
+  margin-top: 10px;
+  border-top: 1px solid #000;
+  padding-top: 5px;
+}
+div.printable-list ul li:last-child span.final-price {
+  font-weight: 600;
+}
+div.printable-list ul li:last-child span.final-price:before {
+  content: "Total: ";
+  margin-left: -2em;
+  font-weight: normal;
+}
+@media print {
+  body {
+    padding-top: 0px;
+  }
+  div.printable-list {
+    display: block;
+  }
+  .panel,
+  .navbar,
+  .jumbotron {
+    display: none;
+  }
 }

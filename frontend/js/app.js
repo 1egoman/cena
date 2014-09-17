@@ -25,6 +25,8 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
   $scope.listSearchString = "";
   this.newFoodItem = "";
 
+  this.outputSortOrder = []
+
   // add an item to the list, providing a url to the item
   this.addItemFromUrl = function(url) {
     $http({
@@ -66,7 +68,8 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
         "storeName": "Custom",
         "price": null,
         "shown": true,
-        "quantity": 1
+        "quantity": 1,
+        "order": 0
       });
       root.pushList();
       $("input.addto-list").val("");
@@ -95,6 +98,8 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
       data: {list: this.items}
     }).success(function(data) {
       if (data == "FAIL") return;
+
+      root.getItemsBySortOrder();
     });
 
     // update the subtotal
@@ -112,6 +117,7 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
       root.items = data.list;
       // update the subtotal
       $("span.final-price").html( "$" + root.updateSubTotal() );
+      root.getItemsBySortOrder();
     });
 
   }
@@ -123,6 +129,26 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
     })
     n = _.reduce(itemPrices, function(memo, num){ return memo + num; }, 0);
     return n.toFixed(2);
+  }
+
+  // get the current date
+  this.getDate = function() {
+    return (new Date()).toLocaleString("en-US");
+  }
+
+  // return the items in their sort order
+  this.getItemsBySortOrder = function() {
+    this.outputSortOrder = []
+    all_orders = _.uniq(_.map(this.items, function(i) {
+      return parseInt(i.order);
+    })).reverse();
+    _.each(all_orders, function(odr) {
+      f = _.filter(root.items, function(i) {
+        return (i.order || 0) == odr;
+      })
+      root.outputSortOrder.push(f);
+    });
+    return this.outputSortOrder;
   }
 
   // update the search

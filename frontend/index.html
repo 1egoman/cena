@@ -152,6 +152,7 @@
             </h3>
 
             <div class="quantity-price">
+              <input type="text" class="tag" placeholder="List Sort Order" ng-model="item.order" ng-change="lC.pushList()"/>
               <input type="number" class="form-control quantity" placeholder="Amt" ng-model="item.quantity" ng-change="lC.pushList()"/>
               <input type="number" class="form-control currency" min="0" max="9999"
                 step="0.01" size="4" placeholder="Price" ng-model="item.price" ng-change="lC.pushList()"/>
@@ -172,6 +173,26 @@
             <span class="final-price"></span>
           </div>
         </div>
+      </div>
+
+      <!-- the printable list -->
+      <div class="printable-list">
+        <h1>
+          Wegmans Grocery List
+          <small>(Generated on {{ lC.getDate() }})</small>
+        </h1>
+        <ul ng-repeat="section in lC.outputSortOrder">
+          <li ng-repeat="item in section" ng-show="item.shown">
+            <span class="price">{{ item.price * item.quantity }}</span>
+            <span class="name">{{ item.name }}</span>
+            <span class="qty">{{ item.quantity }}</span>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <span class="final-price">${{lC.updateSubTotal()}}</span>
+          </li>
+        </ul>
       </div>
 
     </div><!-- /.container -->

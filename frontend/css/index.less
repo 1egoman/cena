@@ -59,6 +59,12 @@ body {
       float: right;
       width: 150px;
     }
+
+    .tag {
+      border: 0px;
+      width: 100%;
+      padding: 6px 12px;
+    }
   }
 }
 
@@ -116,4 +122,64 @@ div.panel-body.price {
 
 .recipe-ingredients {
   margin-top: 20px;
+}
+
+// printable grocery list
+div.printable-list {
+  width: 100%;
+  height: 100%;
+  display: none;
+
+  padding: 20px;
+
+  h1 small {
+    margin-left: 32px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 10px;
+
+    li {
+      font-size: @font-size-base * 0.95;
+
+      span.price {
+        font-weight: 600;
+        margin-right: 16px;
+        &:before {content: "$";}
+      }
+
+      span.qty {
+        color: red;
+        &:before {content: "(";}
+        &:after {content: ")";}
+      }
+    }
+    li:last-child {
+      margin-top: 10px;
+      border-top: 1px solid #000;
+      padding-top: 5px;
+      span.final-price {
+        font-weight: 600;
+        &:before {
+          content: "Total: ";
+          margin-left: -2em;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}
+
+// show list when printing
+@media print {
+  body {
+    padding-top: 0px;
+  }
+  div.printable-list {
+    display: block;
+  }
+  .panel, .navbar, .jumbotron {
+    display: none;
+  }
 }
