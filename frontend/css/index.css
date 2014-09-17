@@ -6292,15 +6292,15 @@ div.printable-list ul li span.qty:before {
 div.printable-list ul li span.qty:after {
   content: ")";
 }
-div.printable-list ul li:last-child {
+div.printable-list ul:last-child li:last-child {
   margin-top: 10px;
   border-top: 1px solid #000;
   padding-top: 5px;
 }
-div.printable-list ul li:last-child span.final-price {
+div.printable-list ul:last-child li:last-child span.final-price {
   font-weight: 600;
 }
-div.printable-list ul li:last-child span.final-price:before {
+div.printable-list ul:last-child li:last-child span.final-price:before {
   content: "Total: ";
   margin-left: -2em;
   font-weight: normal;

@@ -140,7 +140,7 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
   this.getItemsBySortOrder = function() {
     this.outputSortOrder = []
     all_orders = _.uniq(_.map(this.items, function(i) {
-      return parseInt(i.order);
+      return parseInt(i.order) || 0;
     })).reverse();
     _.each(all_orders, function(odr) {
       f = _.filter(root.items, function(i) {
@@ -148,6 +148,7 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
       })
       root.outputSortOrder.push(f);
     });
+    console.log(this.outputSortOrder)
     return this.outputSortOrder;
   }
 
