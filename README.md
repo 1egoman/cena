@@ -20,6 +20,9 @@ based on the layout of the store, for ease of use.
 And lastly, because it's web based, your list is always available online to you
 on any internet connected device.
 
+Trying out the app
+---
+Paste a link (For example, `http://www.wegmans.com/webapp/wcs/stores/servlet/ProductDisplay?productId=372506&storeId=10052&langId=-1`, into the box and it will be added to the list. Also, you can just type in an item's name and hit enter.
 
 Development
 ---
