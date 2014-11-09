@@ -1,20 +1,59 @@
 [
   {
-    "name": "Wegmans Food You Feel Good About 2% Reduced Fat Milk",
-    "imageUrl": "http://www.wegmans.com/prodimg/389/200/077890122389.jpg",
-    "id": 354386,
+    "name": "Wegmans Food You Feel Good About Peanut Butter, Organic, Crunchy",
+    "imageUrl": "http://www.wegmans.com/prodimg/485/200/077890938485.jpg",
+    "id": 369029,
     "storeName": "Wegmans",
-    "price": 2.19,
+    "price": 3.98,
+    "shown": true,
+    "quantity": 1,
+    "order": ""
+  },
+  {
+    "name": "Dandelion Greens",
+    "imageUrl": "http://www.wegmans.com/prodimg/615/200/4615.jpg",
+    "id": 359803,
+    "storeName": "Wegmans",
+    "price": 2.49,
+    "shown": true,
+    "quantity": 1,
+    "order": ""
+  },
+  {
+    "name": "Wegmans Food You Feel Good About Multigrain Bread",
+    "imageUrl": "http://www.wegmans.com/prodimg/255/200/077890331255.jpg",
+    "id": 766050,
+    "storeName": "Wegmans",
+    "price": 2.99,
     "shown": true,
     "quantity": 1
   },
   {
-    "name": "Wegmans Food You Feel Good About 2% Reduced Fat Milk",
-    "imageUrl": "http://www.wegmans.com/prodimg/389/200/077890122389.jpg",
-    "id": 354386,
+    "name": "Wegmans Food You Feel Good About Eggs, Large (one dozen)",
+    "imageUrl": "http://www.wegmans.com/prodimg/338/200/077890801338.jpg",
+    "id": 372506,
     "storeName": "Wegmans",
-    "price": 2.19,
+    "price": 1.99,
     "shown": true,
     "quantity": 1
+  },
+  {
+    "name": "Wegmans Swiss Cheese",
+    "imageUrl": "http://www.wegmans.com/prodimg/009/200/227132000009.jpg",
+    "id": 720423,
+    "storeName": "Wegmans",
+    "price": 7.49,
+    "shown": true,
+    "quantity": 0.4
+  },
+  {
+    "name": "Wegmans Food You Feel Good About Oats, Old Fashioned",
+    "imageUrl": "http://www.wegmans.com/prodimg/445/200/077890648445.jpg",
+    "id": 361389,
+    "storeName": "Wegmans",
+    "price": 3.29,
+    "shown": true,
+    "quantity": 1,
+    "order": ""
   }
 ]

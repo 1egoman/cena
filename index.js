@@ -93,7 +93,7 @@ app.post('/recipe', function(req, res) {
 
 
 
-app.listen('8100')
+app.listen(process.env.PORT || '8100')
 
 console.log(' * Bound to port :8100');
 

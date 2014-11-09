@@ -23,7 +23,7 @@ on any internet connected device.
 
 Development
 ---
-Cena is still occasionally worked on by me, but not very often. It's puropse was
+Cena is still occasionally worked on by me, but not very often. It's purpose was
 for my mom, and unless anyone else suggests anything else, I probably won't add anything
 new.
 
