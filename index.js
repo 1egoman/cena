@@ -15,6 +15,9 @@ weg.getKnownProducts()
 
 var list = [];
 
+// static
+app.use(express.static(__dirname+"/frontend"));
+
 // allow CORS
 app.use(bodyParser.json());
 app.all('*', function(req, res, next) {
@@ -95,6 +98,6 @@ app.post('/recipe', function(req, res) {
 
 app.listen(process.env.PORT || '8100')
 
-console.log(' * Bound to port :8100');
+console.log(' * Bound to port', process.env.PORT || 8100);
 
 exports = module.exports = app;
