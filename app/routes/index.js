@@ -1,19 +1,22 @@
 var fs = require("fs");
+var querystring = require("querystring");
+var _ = require("underscore");
 
 // initialize store
-weg = require("../stores/wegmans");
-weg.setStoreId(10052);
-weg.getKnownProducts()
+stores = require("../stores");
+stores.byName("Wegmans").setStoreId(10052);
+stores.byName("Wegmans").getKnownProducts()
 var list = [];
 
 module.exports = function(app) {
 
 
   // get a product's id
-  app.get('/store/product/id/:pid', function(req, res){
+  app.get('/store/:name/product/id/:pid', function(req, res){
 
     // get product by id
-    weg.getProductById(req.params.pid, function(product) {
+    console.log( stores.byName(req.params.name) )
+    stores.byName(req.params.name).getProductById(req.params.pid, function(product) {
       res.send( product || "NONE" );
     })
 
@@ -23,7 +26,7 @@ module.exports = function(app) {
   app.get('/store/product/url', function(req, res){
     // get product by name
     name = querystring.unescape(req.param("url")) || res.send("FAIL")
-    weg.getProductByUrl(name, function(product) {
+    stores.byUrl(name).getProductByUrl(name, function(product) {
       res.send( product || "NONE" );
     })
 
@@ -47,7 +50,7 @@ module.exports = function(app) {
 
       // set all prices in the known items
       _.each(list, function(item) {
-        weg.setProductPrice(item.id, item.price);
+        stores.byName(item.storeName).setProductPrice(item.id, item.price);
       });
 
       fs.writeFile(__dirname + "/persistant/list.json", JSON.stringify(list, null, 2));
