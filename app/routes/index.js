@@ -4,6 +4,7 @@ var fs = require("fs");
 weg = require("../stores/wegmans");
 weg.setStoreId(10052);
 weg.getKnownProducts()
+var list = [];
 
 module.exports = function(app) {
 

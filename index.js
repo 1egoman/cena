@@ -8,13 +8,6 @@ var express = require('express'),
     fs = require("fs"),
     app = express();
 
-// initialize store
-weg = require("./stores/wegmans");
-weg.setStoreId(10052);
-weg.getKnownProducts()
-
-var list = [];
-
 // allow CORS
 app.use(bodyParser.json());
 app.use(express.static(__dirname+'/frontend'));
