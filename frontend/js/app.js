@@ -46,7 +46,7 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
       if (data == "FAIL") return;
       data.shown = true;
       data.quantity = 1;
-      root.items.push(data);
+      root.items.unshift(data); // prepend
       root.pushList();
     });
   }
@@ -68,7 +68,7 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
 
   this.tryAddFood = function(evt) {
     if (evt.keyCode == 13) {
-      root.items.push({
+      root.items.unshift({
         "name": this.newFoodItem,
         "imageUrl": null,
         "id": -1,
