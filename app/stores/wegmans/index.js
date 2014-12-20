@@ -51,7 +51,6 @@ module.exports = {
 
     // do the request
     request(url, function(error, response, html) {
-        console.log(error)
       if(!error) {
 
 
@@ -62,6 +61,7 @@ module.exports = {
         // test for a known product, if so just send its previous data
         var id = parseInt(parsedUrl.query.productId);
         if ( id > 0 && root.knownProducts[id.toString()]) {
+          // console.log(root.knownProducts[id], id)
           callback(root.knownProducts[id]);
           return;
         }
@@ -85,10 +85,7 @@ module.exports = {
         response.imageUrl = $("link[rel=image_src]").attr("href");
 
         // add to the known products
-        index = root.knownProducts.indexOf(_.find(root.knownProducts, function(a) {
-          return a.id == response.id
-        }));
-        root.knownProducts[index] = response;
+        root.knownProducts[id] = response;
         root.saveKnownProducts();
 
         // return the response

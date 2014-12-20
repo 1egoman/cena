@@ -1,3 +1,18 @@
 {
-  "knownProducts": []
+  "knownProducts": [
+    {
+      "name": "Iceberg Lettuce",
+      "imageUrl": "http://www.wegmans.com/prodimg/203/200/033383650203.jpg",
+      "id": 387796,
+      "storeName": "Wegmans",
+      "price": 0
+    },
+    {
+      "name": "Iceberg Lettuce",
+      "imageUrl": "http://www.wegmans.com/prodimg/203/200/033383650203.jpg",
+      "id": 387796,
+      "storeName": "Wegmans",
+      "price": 0
+    }
+  ]
 }
