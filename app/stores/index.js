@@ -22,7 +22,7 @@ module.exports = {
     cb = null;
 
     stores.forEach(function(s) {
-      if ( s.getStoreName().toLowerCase() == name.toLowerCase() ) {
+      if ( typeof name === "string" && s.getStoreName().toLowerCase() == name.toLowerCase() ) {
         cb = s;
         return;
       }
