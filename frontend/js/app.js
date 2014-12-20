@@ -1,5 +1,6 @@
 var app = angular.module("Cena", []);
-var HOST = "http://127.0.0.1:8100";
+var HOST = "http://grocery.apps.rgaus.net";
+// var HOST = "http://127.0.0.1:8100";
 
 var showRecipies = function() {
   $("body > div.container").hide();
