@@ -16,6 +16,12 @@ var showList = function() {
 }
 showList();
 
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
+
 
 app.controller("listCtrl", function($scope, $http, $timeout) {
 
@@ -92,6 +98,12 @@ app.controller("listCtrl", function($scope, $http, $timeout) {
 
   // push the local list information to the server
   this.pushList = function() {
+
+    // round prices (gets rid of some really shifty rounding errors)
+    _.each(this.items, function(item) {
+      item.price = Math.round(item.price*100, 3)*.01;
+    });
+
     $http({
       method: "post",
       url: HOST+"/list",

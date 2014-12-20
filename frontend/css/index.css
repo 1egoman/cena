@@ -6280,9 +6280,6 @@ div.printable-list ul li span.price {
   font-weight: 600;
   margin-right: 16px;
 }
-div.printable-list ul li span.price:before {
-  content: "$";
-}
 div.printable-list ul li span.qty {
   color: red;
 }

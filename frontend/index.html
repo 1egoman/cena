@@ -89,7 +89,7 @@
           <p>Add some items to your list above</p>
         </div>
         <ul class="list-group list">
-          <li ng-repeat="item in rC.items" ng-show="item.shown" class="list-group-item recipe-item">
+          <li ng-repeat="item in rC.items | reverse" ng-show="item.shown" class="list-group-item recipe-item">
             <h3>
               {{ item.name }}
               <span class="small">{{ item.storeName }}</span>
@@ -201,7 +201,7 @@
         </h1>
         <ul ng-repeat="section in lC.outputSortOrder">
           <li ng-repeat="item in section" ng-show="item.shown">
-            <span class="price">{{ item.price * item.quantity }}</span>
+            <span class="price">{{ item.price * item.quantity | currency }}</span>
             <span class="name">{{ item.name }}</span>
             <span class="qty">{{ item.quantity }}</span>
           </li>
